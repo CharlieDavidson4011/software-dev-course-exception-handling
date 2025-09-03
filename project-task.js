@@ -47,7 +47,7 @@ function getAdoptionFee(animalName) {
     return fees[index];
 }
 // Main program
-console.log("Welcome to the Pet Shelter System");
+/*console.log("Welcome to the Pet Shelter System");
 while (true) {
     let action = readlineSync.question("Choose an action: 'add', 'fee', or 'exit': ").toLowerCase();
     if (action === "exit") {
@@ -65,9 +65,39 @@ while (true) {
     } else {
         console.log("Invalid action. Please choose 'add', 'fee', or 'exit'.");
     }
+}*/
+console.log("Welcome to the Pet Shelter System");
+while (true) {
+    let action = readlineSync.question("Choose an action: 'add', 'fee', or 'exit': ").toLowerCase();
+    if (action === "exit") {
+        console.log("Goodbye!");
+        break;
+    }
+    if (action === "add") {
+        let animal = readlineSync.question("Enter the animal's name: ");
+        let fee = Number(readlineSync.question("Enter the adoption fee: "));
+        try {
+            let animal = addAnimal();
+        }
+        catch (err) {
+            console.log("Name cannot be blank.");
+        }
+        addAnimal(animal, fee);
+        console.log(`${animal} added with a fee of $${fee}.`);
+    } else if (action === "fee") {
+        let animal = readlineSync.question("Enter the animal's name to find its adoption fee: ");
+        try {
+            let fee = getAdoptionFee(animal);
+            console.log(`${animal}'s adoption fee is $${getAdoptionFee(animal)}.`);
+        } catch (err) {
+            console.log("Error retrieving fee");
+        }
+    }
+    else {
+        console.log("Invalid action. Please choose 'add', 'fee', or 'exit'.");
+    }
+
 }
-
-
 
 /*
 Problems to Solve
